@@ -13,7 +13,7 @@
     "cop:id": "123456",
     "mission": "Emergency Response Team A",
     "cop:dggs_id": "R312603625535", 
-    // Hypothetical rHEALPix ID for New York City area at a high resolution
+       // Hypothetical rHEALPix ID for New York City area at a high resolution
     "cop:dggs_crs": "rHEALPix-R12" 
   },
   "geometry": {
