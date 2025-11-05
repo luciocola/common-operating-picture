@@ -1,1 +1,31 @@
-
+{
+  "cop_version": "1.0.0",
+  "cop_id": "123456",
+  "name": "Warning area....",
+  "status": "Active",
+  "created_at": "2025-11-03T09:00:00Z",
+  "dggs_aoi": {
+    "crs": "rHEALPix-R12",
+    "id": "R3126036", 
+    "description": "Primary area of operations "
+  },
+  "asset_manifest": [
+    {
+      "asset_id": "cop-features-123456",
+      "type": "STAC_Collection_Features",
+      "description": "Master collection of all DGGS-filtered feature intelligence for the current operational window.",
+      "location": "s3://cop-stac-catalog/collections/cop-features-123456.json",
+      "integrity_hash": "sha256:d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5",
+      // Hash of the STAC Collection JSON file itself
+      "dggs_focus": "R3126036*" 
+      // Indicates all DGGS cells nested under the primary R3126036 AOI
+    },
+    {
+      "asset_id": "mission-plan-doc-v2",
+      "type": "Document_PDF",
+      "description": "Current Emergency Response Mission Plan, Version 2.",
+      "location": "https://docs.er.org/plans/mission-plan-v2.pdf",
+      "integrity_hash": "sha256:f7g8h9i0j1k2l3m4n5o6p7q8r9s0t1u2v3w4x5y6z7a8b9c0d1e2f3g4h5i6j7k8"
+    }
+  ]
+}
