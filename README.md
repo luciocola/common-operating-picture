@@ -5,7 +5,7 @@
 - **Field Name Prefix:** cop
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @luciocola @https://github.com/securedimesions
+- **Owner**: @luciocola
 
 This document explains the Common Operating Picture Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 A Common Operating Picture (COP) file is a standardized format used to transfer data from one system to another. It's designed to facilitate the exchange of information between different systems, platforms, and applications. Based on the work of OGC --OWS Context Conceptual Model 12-080r2.
@@ -50,11 +50,10 @@ The fields in the table below can be used in these parts of STAC documents:
 | Field Name           | Type                      | Description                                  |
 | -------------------- | ------------------------- | -------------------------------------------- |
 | cop:collection   | string                    | **REQUIRED**. Describe the required field... |
-| cop:id         | [id Object](#id-object) | object identifier                       |
-| cop:title | COP Feature Assets for....                       |
+| cop:id         | [id Object](#id-object) | **REQUIRED**. Object identifier                       |
 | cop:description | A collection of real-time feature query results related to the operational area, filtered by DGGS cells.                      |
 | cop:license | "propertary", "public"                 |license type                       |
-| cop:extent | "spatial","temporal"              | geographic/temporal extent of the area..                |
+| cop:releasability  | string              | to single entity, group(s)....                |
 | cop:summaries | "dggs_crs","asset_type","id"              | dggrs, feature_query POI, idcop
 | cop:links | "rel": "about", "href": "s3://cop-manifests/123456.json", "title": "COP Master Manifest" | COP manifest
 
@@ -72,11 +71,10 @@ This is the introduction for the purpose and the content of the XYZ Object...
 | Field Name | Type      | Description                                  |
 | ---------- | --------- | -------------------------------------------- |
 | id         | number    | **REQUIRED**. Describe the required field... |
-| title      | text      | **REQUIRED**. Describe the required field... |
 | description| text      | **REQUIRED**. Describe the required field... |
 | license    | text      | **REQUIRED**. Describe the required field... |
-| extent     | geography | **REQUIRED**. Describe the required field... |
-| summarie   | text      | **REQUIRED**. Describe the required field... |
+| releasability     | text | **REQUIRED**. Describe the required field... |
+| summaries   | text      | **REQUIRED**. Describe the required field... |
 | links      | href      | **REQUIRED**. Describe the required field... |
 
 
