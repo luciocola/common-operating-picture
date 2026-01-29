@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://stac-extensions.github.io/cop/v1.0.0/schema.json#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "schema": "http://schema.org/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "time": "http://www.w3.org/2006/time#",
+    "dggs": "http://www.opengis.net/ont/dggs#",
+    "owc": "http://www.opengis.net/ont/owc/1.0#",
+    
+    "cop": "https://stac-extensions.github.io/cop/v1.0.0/schema.json#cop:",
+    
+    "cop:mission": {
+      "@id": "owc:operationIdentifier",
+      "@type": "xsd:string"
+    },
+    "cop:classification": {
+      "@id": "schema:securityLevel",
+      "@type": "xsd:string"
+    },
+    "cop:releasability": {
+      "@id": "dcterms:accessRights",
+      "@type": "xsd:string"
+    },
+    "cop:dggs_zone_id": {
+      "@id": "dggs:zoneIdentifier",
+      "@type": "xsd:string"
+    },
+    "cop:dggs_zone_ids": {
+      "@id": "dggs:zoneIdentifiers",
+      "@type": "xsd:string",
+      "@container": "@list"
+    },
+    "cop:dggs_center_zone": {
+      "@id": "dggs:centerZoneIdentifier",
+      "@type": "xsd:string"
+    },
+    "cop:dggs_crs": {
+      "@id": "dggs:referenceSystem",
+      "@type": "xsd:string"
+    },
+    "cop:dggs_resolution": {
+      "@id": "dggs:resolutionLevel",
+      "@type": ["xsd:string", "xsd:integer"]
+    },
+    "cop:service_provider": {
+      "@id": "schema:provider",
+      "@type": "@id"
+    },
+    "cop:manifest_ref": {
+      "@id": "owc:manifestReference",
+      "@type": "@id"
+    },
+    "cop:volume_of_interest": {
+      "@id": "dggs:volumeOfInterest",
+      "@type": "@json",
+      "@context": {
+        "min_zone": {
+          "@id": "dggs:minimumZone",
+          "@type": "xsd:string"
+        },
+        "max_zone": {
+          "@id": "dggs:maximumZone",
+          "@type": "xsd:string"
+        },
+        "resolution": {
+          "@id": "dggs:resolution",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "cop:platform": {
+      "@id": "prov:wasAttributedTo",
+      "@type": "xsd:string"
+    },
+    "cop:sensor": {
+      "@id": "schema:instrument",
+      "@type": "xsd:string"
+    },
+    "cop:software_identifier": {
+      "@id": "prov:wasDerivedFrom",
+      "@type": "xsd:string"
+    },
+    "cop:asset_type": {
+      "@id": "dcterms:type",
+      "@type": "xsd:string"
+    },
+    "cop:integrity_hash": {
+      "@id": "schema:sha256",
+      "@type": "xsd:string"
+    }
+  }
+}

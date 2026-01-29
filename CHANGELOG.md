@@ -9,11 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **JSON-LD Vocabulary** (`context.jsonld`):
+  - Formal semantic mappings for all COP fields
+  - Integration with OWS Context, DGGS Ontology, Schema.org, Dublin Core, W3C PROV, and GeoSPARQL
+  - Enables linked data and RDF/OWL interoperability
+  - Supports semantic web integration and knowledge graph construction
 - Enhanced DGGS support based on share_common_operating_picture implementation:
   - `cop:dggs_zone_ids` - Array of DGGS zone identifiers for collections/items covering multiple zones
   - `cop:dggs_center_zone` - DGGS zone identifier for the center point
   - `cop:dggs_resolution` - DGGS resolution level (string or integer)
 - New Collection example (`collection-dggs-zones.json`) demonstrating multi-zone DGGS coverage
+- Semantic Vocabulary section in README with complete ontology mappings
 - Best practices for BLAKE3 integration with blockchain/IPFS workflows
 - Best practices for web service metadata export
 - Documentation improvements for DGGS field usage patterns
@@ -23,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated schema to accept both string and integer types for `cop:dggs_resolution`
 - Enhanced DGGS documentation with usage guidelines for single vs. multiple zones
 - Expanded `cop:dggs_crs` examples to include H3, S2, and ISEA3H systems
+- Added JSON-LD Context link to README header
 
 ## [1.0.0] - 2025-11-25
 

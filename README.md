@@ -6,8 +6,22 @@
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
 - **Owner**: @luciocola <https://secure-dimensions.de>
+- **JSON-LD Context:** [context.jsonld](context.jsonld)
 
 This extension provides fields for documenting Common Operating Picture (COP) information in STAC catalogs. This work is based on AI DGGS pilot with OGC Open Geospatial Consortium. It facilitates the exchange of operational data using Discrete Global Grid Systems (DGGS) for spatial organization, supporting emergency response, defense operations, and real-time situational awareness.
+
+## Vocabulary
+
+The COP extension defines a formal vocabulary using JSON-LD that maps COP fields to established semantic web standards:
+
+- **OGC OWS Context** (`owc`): For operational identifiers and manifest references
+- **DGGS Ontology** (`dggs`): For discrete global grid system fields
+- **Schema.org** (`schema`): For platform, sensor, and provider information
+- **Dublin Core Terms** (`dcterms`): For access rights and asset types
+- **W3C PROV** (`prov`): For provenance and attribution
+- **GeoSPARQL** (`geo`): For spatial relationships
+
+The complete vocabulary mapping is available in [context.jsonld](context.jsonld), enabling semantic interoperability and linked data integration.
 
 ## Background
 
@@ -29,6 +43,46 @@ A Common Operating Picture (COP) is a standardized format for transferring opera
 5. **Multi-agency Coordination**: Share information across organizational boundaries with appropriate access controls via OGC API standards, supporting both vector features and cloud-native raster datasets
 6. **Terrain Analysis**: Distribute elevation models, slope analysis, and other raster-based terrain products for operational planning using Cloud Optimized GeoTIFF for efficient streaming access
 7. **Earth Observation Integration**: Incorporate Analysis Ready Data (ARD) from satellite missions with standardized preprocessing and atmospheric correction for immediate operational use
+
+## Semantic Vocabulary
+
+The COP extension provides a formal JSON-LD vocabulary that maps extension fields to established ontologies and semantic web standards. This enables:
+
+- **Semantic Interoperability**: Machine-readable field definitions aligned with W3C standards
+- **Linked Data Integration**: Direct mapping to RDF/OWL ontologies for knowledge graphs
+- **Cross-domain Harmonization**: Compatibility with existing geospatial and operational ontologies
+
+### Vocabulary Mappings
+
+| COP Field | Mapped Vocabulary | URI |
+| --------- | ----------------- | --- |
+| `cop:mission` | OWS Context | `owc:operationIdentifier` |
+| `cop:classification` | Schema.org | `schema:securityLevel` |
+| `cop:releasability` | Dublin Core Terms | `dcterms:accessRights` |
+| `cop:dggs_zone_id` | DGGS Ontology | `dggs:zoneIdentifier` |
+| `cop:dggs_zone_ids` | DGGS Ontology | `dggs:zoneIdentifiers` |
+| `cop:dggs_center_zone` | DGGS Ontology | `dggs:centerZoneIdentifier` |
+| `cop:dggs_crs` | DGGS Ontology | `dggs:referenceSystem` |
+| `cop:dggs_resolution` | DGGS Ontology | `dggs:resolutionLevel` |
+| `cop:service_provider` | Schema.org | `schema:provider` |
+| `cop:manifest_ref` | OWS Context | `owc:manifestReference` |
+| `cop:volume_of_interest` | DGGS Ontology | `dggs:volumeOfInterest` |
+| `cop:platform` | W3C PROV | `prov:wasAttributedTo` |
+| `cop:sensor` | Schema.org | `schema:instrument` |
+| `cop:software_identifier` | W3C PROV | `prov:wasDerivedFrom` |
+| `cop:asset_type` | Dublin Core Terms | `dcterms:type` |
+| `cop:integrity_hash` | Schema.org | `schema:sha256` |
+
+### Referenced Ontologies
+
+- **OWS Context**: OGC OWS Context Conceptual Model - `http://www.opengis.net/ont/owc/1.0#`
+- **DGGS Ontology**: OGC Discrete Global Grid Systems - `http://www.opengis.net/ont/dggs#`
+- **Schema.org**: Structured data vocabulary - `http://schema.org/`
+- **Dublin Core Terms**: Metadata element set - `http://purl.org/dc/terms/`
+- **W3C PROV**: Provenance Data Model - `http://www.w3.org/ns/prov#`
+- **GeoSPARQL**: Geographic Query Language - `http://www.opengis.net/ont/geosparql#`
+
+The complete JSON-LD context is available at [context.jsonld](context.jsonld).
 
 ## Fields
 
