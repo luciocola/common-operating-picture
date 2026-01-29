@@ -160,7 +160,10 @@
         {"required": ["cop:classification"]},
         {"required": ["cop:releasability"]},
         {"required": ["cop:dggs_zone_id"]},
+        {"required": ["cop:dggs_zone_ids"]},
+        {"required": ["cop:dggs_center_zone"]},
         {"required": ["cop:dggs_crs"]},
+        {"required": ["cop:dggs_resolution"]},
         {"required": ["cop:asset_type"]},
         {"required": ["cop:integrity_hash"]},
         {"required": ["cop:manifest_ref"]},
@@ -179,8 +182,8 @@
         },
         "cop:classification": {
           "type": "string",
-          "enum": ["public release", "internal", "confidential", "restricted", "classified"],
-          "description": "Security classification level of the COP data"
+          "enum": ["UNCLASSIFIED", "RESTRICTED", "CONFIDENTIAL", "SECRET", "TOP SECRET", "public release", "internal", "confidential", "restricted", "classified"],
+          "description": "Security classification level of the COP data (IPT standard: UNCLASSIFIED, RESTRICTED, CONFIDENTIAL, SECRET, TOP SECRET)"
         },
         "cop:releasability": {
           "type": "string",
@@ -188,11 +191,26 @@
         },
         "cop:dggs_zone_id": {
           "type": "string",
-          "description": "DGGS zone identifier for the operational area (e.g., rHEALPix cell ID)"
+          "description": "DGGS zone identifier for the operational area (e.g., rHEALPix cell ID like 'R312603625535')"
+        },
+        "cop:dggs_zone_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Array of DGGS zone identifiers covering the operational area (e.g., for collection-level coverage with multiple zones)"
+        },
+        "cop:dggs_center_zone": {
+          "type": "string",
+          "description": "DGGS zone identifier for the center point of the operational area"
         },
         "cop:dggs_crs": {
           "type": "string",
-          "description": "DGGS Coordinate Reference System (e.g., 'rHEALPix-R12')"
+          "description": "DGGS Coordinate Reference System (e.g., 'rHEALPix-R12', 'H3-R5', 'S2-L10', 'ISEA3H-R12')"
+        },
+        "cop:dggs_resolution": {
+          "type": ["string", "integer"],
+          "description": "DGGS resolution level (e.g., 12 for rHEALPix-R12, or '12' as string)"
         },
         "cop:asset_type": {
           "type": "string",
