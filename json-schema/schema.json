@@ -169,7 +169,10 @@
         {"required": ["cop:manifest_ref"]},
         {"required": ["cop:platform"]},
         {"required": ["cop:sensor"]},
-        {"required": ["cop:software_identifier"]}
+        {"required": ["cop:software_identifier"]},
+        {"required": ["cop:ai_confidence_score"]},
+        {"required": ["cop:ai_model"]},
+        {"required": ["cop:rag_metadata"]}
       ]
     },
     "fields": {
@@ -260,6 +263,55 @@
         "cop:software_identifier": {
           "type": "string",
           "description": "Software used to create or process the data (e.g., 'QGIS/3.28', 'ArcGIS/10.8')"
+        },
+        "cop:ai_confidence_score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "AI/ML model confidence score for generated or classified results (0.0 to 1.0, where 1.0 is highest confidence)"
+        },
+        "cop:ai_model": {
+          "type": "string",
+          "description": "AI/ML model identifier used to generate or process the data (e.g., 'GPT-4', 'YOLO-v8', 'SAM-Medical-v1')"
+        },
+        "cop:rag_metadata": {
+          "type": "object",
+          "description": "Retrieval-Augmented Generation (RAG) metadata for AI-generated results",
+          "properties": {
+            "retrieval_sources": {
+              "type": "integer",
+              "description": "Number of documents/sources retrieved for context"
+            },
+            "retrieval_method": {
+              "type": "string",
+              "description": "Method used for retrieval (e.g., 'vector_similarity', 'keyword_search', 'hybrid')"
+            },
+            "generation_method": {
+              "type": "string",
+              "description": "Generation approach (e.g., 'RAG', 'few-shot', 'zero-shot')"
+            },
+            "model_version": {
+              "type": "string",
+              "description": "Specific version of the AI model"
+            },
+            "context_window_tokens": {
+              "type": "integer",
+              "description": "Number of tokens in the context window"
+            },
+            "temperature": {
+              "type": "number",
+              "description": "Model temperature parameter (0.0 to 2.0)"
+            },
+            "top_p": {
+              "type": "number",
+              "description": "Model top-p/nucleus sampling parameter"
+            },
+            "validation_status": {
+              "type": "string",
+              "enum": ["validated", "pending_review", "not_validated", "failed_validation"],
+              "description": "Human validation status of AI-generated result"
+            }
+          }
         }
       },
       "patternProperties": {

@@ -112,6 +112,9 @@ The fields in the table below can be used in these parts of STAC documents:
 | cop:platform            | string | Platform that captured or generated the data (e.g., satellite name, aircraft, UAV, sensor system) |
 | cop:sensor              | string | Sensor or instrument that captured the data |
 | cop:software_identifier | string | Software used to create or process the data (e.g., 'QGIS/3.28', 'ArcGIS/10.8') |
+| cop:ai_confidence_score | number | AI/ML model confidence score for generated or classified results (0.0 to 1.0, where 1.0 is highest confidence) |
+| cop:ai_model            | string | AI/ML model identifier used to generate or process the data (e.g., 'GPT-4', 'YOLO-v8', 'SAM-Medical-v1') |
+| cop:rag_metadata        | RAG Metadata Object | Retrieval-Augmented Generation (RAG) metadata for AI-generated results |
 
 ### Asset-Level Fields
 
@@ -205,6 +208,59 @@ Examples:
 - `ArcGIS/10.8.2`
 - `GDAL/3.4.1`
 - `Python/3.9.7`
+
+#### cop:ai_confidence_score
+
+Numeric confidence score (0.0 to 1.0) indicating the AI/ML model's confidence in its output:
+- `1.0`: Highest confidence (100%)
+- `0.9-0.95`: Very high confidence
+- `0.8-0.89`: High confidence
+- `0.7-0.79`: Moderate confidence
+- `< 0.7`: Low confidence (may require human review)
+
+Used for AI-generated classifications, object detection results, RAG responses, or any ML model output.
+
+#### cop:ai_model
+
+Identifier for the AI/ML model used to generate or process the data. Examples:
+- Large Language Models: `GPT-4`, `Claude-3-Opus`, `Llama-2-70B`
+- Computer Vision: `YOLO-v8`, `Mask-RCNN`, `SAM` (Segment Anything Model)
+- Medical AI: `SAM-Medical-v1`, `MedicalHSI-Classifier-v2`
+- Geospatial AI: `DeepGlobe-ResNet50`, `SpaceNet-UNet`
+- RAG Systems: `RAG-GPT-4-Turbo`, `LangChain-OpenAI`
+
+#### cop:rag_metadata
+
+Metadata object for Retrieval-Augmented Generation (RAG) AI results:
+
+| Field Name | Type | Description |
+| ---------- | ---- | ----------- |
+| retrieval_sources | integer | Number of documents/sources retrieved for context |
+| retrieval_method | string | Method used for retrieval (e.g., `vector_similarity`, `keyword_search`, `hybrid`) |
+| generation_method | string | Generation approach (e.g., `RAG`, `few-shot`, `zero-shot`) |
+| model_version | string | Specific version of the AI model |
+| context_window_tokens | integer | Number of tokens in the context window |
+| temperature | number | Model temperature parameter (0.0 to 2.0) |
+| top_p | number | Model top-p/nucleus sampling parameter |
+| validation_status | string | Human validation status: `validated`, `pending_review`, `not_validated`, `failed_validation` |
+
+Example:
+```json
+{
+  "cop:ai_model": "GPT-4-Turbo",
+  "cop:ai_confidence_score": 0.92,
+  "cop:rag_metadata": {
+    "retrieval_sources": 5,
+    "retrieval_method": "vector_similarity",
+    "generation_method": "RAG",
+    "model_version": "gpt-4-turbo-2024-04-09",
+    "context_window_tokens": 8192,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "validation_status": "validated"
+  }
+}
+```
 
 #### Volume of Interest Object
 
